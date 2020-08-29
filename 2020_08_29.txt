@@ -1,0 +1,8 @@
+<?php
+
+$hi= "hello";
+echo "HELLO PHP!" . "<br />";
+echo "$hi PHP!" . "<br />";
+echo "'$hi PHP!'" . "<br />";
+echo '$hi' . "<br />";
+
