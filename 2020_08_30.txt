@@ -1,0 +1,112 @@
+註解
+
+<?php
+
+$i = 1 + 1; // 計算$i
+$n = 2 + 2; # 計算$n
+
+/*
+註解文字區塊
+$a = $i + $n;
+echo $a;
+上述指令並不會被執行
+*/
+
+變數
+
+<?php
+
+//正確
+$a1 = 100;
+$_c = 200;
+$b = $a1 + $_c;
+$B = $a1 + $b;
+
+//錯誤
+$123x = 0;
+$?-y = 1;
+int $a = 2;
+
+內容值的宣告
+
+<?php
+
+$a = 0;
+echo 'a:' . $a . '<br />';
+$name = 100;
+$name = 'David';
+echo '姓名為' . $name . '<br />';
+$a = $a + 100;
+echo $a . '分!';
+
+變數的存活時間
+
+<?php
+
+$x = 1;
+function multiply($x) {
+    $sum = $x * 2;
+    echo "函數呼叫結束<br/>";
+}
+
+?>
+
+<?php
+
+multiply($x);
+echo "x = $x<br>";
+echo "sum = $sum<br>";
+
+?>
+
+常數
+
+<?php
+
+define ('PI', 3.14); 
+define ('PI',3);
+echo PI;
+
+基本資料型態
+
+<?php
+
+$number = PHP_INT_MAX;
+#var_dump($number);
+$number++;
+var_dump($number);
+
+函數
+
+<?php
+
+function bigger(int $x, int $y): string
+{
+    if ($x > $y) {
+        $z = $x . ">" . $y;
+    }else{
+        $z = $x . "<" . $y;
+        function newFunc() {
+            echo "新函數誕生";
+        }
+    }
+    
+    return $z;
+}
+
+echo bigger(10, 15);
+
+遞迴函數
+
+<?php
+
+function fib($n) {
+    if($n <= 1) return 1;
+    else return fib($n - 1) + fib($n - 2);
+}
+
+for($i = 0; $i <= 9; $i++) {
+    echo fib($i) . '    ';
+}
+
+
