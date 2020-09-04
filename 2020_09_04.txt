@@ -1,0 +1,259 @@
+類別
+
+<?php
+
+class dog{
+    public $age;
+    public function getAge() {
+        echo "My age is $this->age";
+    }
+}
+
+
+物件
+<?php
+
+class dog{
+    public $age;
+    public function getAge() {
+        echo "My age is $this->age";
+    }
+}
+
+$mydog = new dog();
+$mydog -> age = 3;
+$mydog -> getAge();
+
+封裝與資訊印藏
+
+<?php
+
+public $x = "123";
+protected $y = "45.6";
+private $z = "seven";
+
+function place() {
+    echo "$this->x <br />"
+    echo "$this->y <br />"
+    echo "$this->z <br />"
+}
+
+$myclass = new Myclass();
+echo $myclass ->place();
+echo $myclass ->x;
+echo $myclass ->y;
+echo $myclass ->z;
+
+繼承
+
+<?php
+
+class bird{
+    function fly() {
+        print "birds can fly.<br/>";
+    }
+}
+
+class parrot extends bird{
+    function talk() {
+        print "模仿人類說話";
+    }
+}
+
+$mybird = new parrot();
+$mybird ->fly();
+
+覆寫
+
+<?php
+
+class bird{
+    function fly() {
+        print "birds can fly.<br/>";
+    }
+}
+
+class parrot extends bird{
+    function talk() {
+        print "模仿人類說話";
+    function fly() {
+        print "parrot can fly.<br/>";
+    }
+    }
+}
+
+$mybird = new parrot();
+$mybird ->fly();
+
+介面
+
+<?php
+
+interface Count1{
+    Public function add($x , $y);
+}
+
+interface Count2{
+    Public function sub($x , $y);
+}
+
+interface Count3 extends Count1{
+    Public function mult($x , $y);
+}
+
+Class MyMath implements Count2, Count3{
+    Public function add($x , $y){
+        Return$x + $y;
+    }
+    Public function sub($x , $y){
+        Return$x - $y;
+    }
+    Public function mult($x , $y){
+        Return$x * $y;
+    }
+}
+
+$mymath= new MyMath();
+echo "7 + 5=" . $mymath -> add (7, 5) . "<br/>";
+echo "7 - 5=" . $mymath -> sub (7, 5) . "<br/>";
+echo "7 * 5=" . $mymath -> mult (7, 5) . "<br/>";
+
+多形
+
+<?php
+
+class animal{
+    function calling($temp){
+        $temp->call();
+    }
+    function call() {
+     #空白   
+    }
+}
+
+class cat{
+ function call() {
+     echo 'cat' . '<br/>';
+ }   
+}
+
+class dog{
+    function call(){
+        echo 'dog' . '<br/>';
+    }
+}
+
+$myanimal = new animal();
+$animal1 = new cat();
+$animal2 = new dog();
+$myanimal ->calling($animal1);
+$myanimal ->calling($animal2);
+
+引用類別incllude 與 required
+
+<?php
+
+$color = "red";
+$animal = "cat";
+
+<?php
+
+include "facorite.php";
+echo "My favorite color is $color. <br/>";
+echo "I like $animal.;"
+
+try catch 敘述
+
+<?php
+
+function check($num) {
+    if($num == 0) {
+        throw new Exception('num cannot be 0',100); #拋出例外
+    }
+    return $num;
+}
+try{
+    echo check(0);
+}
+catch(ecxeption $e) {
+    echo "error message:" . $e->getMessage() . "<br/>";
+    echo "error code" . $e->geCode() . "<br/>";
+}
+
+exception 類別的繼承
+
+<?php
+
+class EmailFormatException extends Exception{
+    function printMessage() {
+        echo "例外訊息:" . $this->getMessage() . "<br/>";  
+    }
+}
+
+function checkEmail($email){
+    if (!strpos($emil,"@"))
+    throw new EmailFormaExceotion("E-mail需要包含'@'");
+}
+
+try{
+    checkEmail('david.com');
+}
+catch(EmailFormaException $e){
+    $e->printMessage();
+}
+
+form表單建立
+
+<form action ="ch02\ex_2-8-1_2.php" method ="get">
+    請輸入帳號及密碼:<br>
+    帳號:<input type="text" name="account" /><br>
+    密碼:<input type="password" name="password" /><br>
+    <input type="submit" value="登入" />
+</form>
+
+get 方法
+
+<?php
+
+$account = $_GET[]"account";
+$password = $_GET["pssword"];
+
+echo "帳號" . $account . "<br/>";
+echo "密碼" . $password;
+
+POST方法
+
+<?php
+
+$account = $_POST[]"account";
+$password = $_POST["pssword"];
+
+echo "帳號" . $account . "<br/>";
+echo "密碼" . $password;
+
+Session
+
+<?php
+
+session_start();
+$_SESSION['memberID'] = '001';
+echo $_SESSION['memberID'];
+
+unset($_SESSION['memberID']);
+session_unset();
+
+cookie
+
+<?php
+
+setcookie("member", "David", time() +3600);
+echo $_COOKIE["member"];
+setcookie("member", " David", timr()-3600);
+
+http標頭
+
+<?php
+
+header("Content-type:application/pdf");
+header("Content-Disposition:attachment;filename='downloaded.pdf'");
+readfile("original.pdf");
